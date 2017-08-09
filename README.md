@@ -86,6 +86,20 @@ http://localhost/basic/web/
 CONFIGURATION
 -------------
 
+### Local config files
+
+Usually each application has some configuration that should not be shared between different installations
+and should not be stored in [version control system](https://en.wikipedia.org/wiki/Version_control), for
+example personal keys or configuration specific for a particular server or development environment. 
+In `config` directory you can find a set of config files suffixed by `-local.php` - these files are designed for 
+storing such a configuration. These local configs are added to `.gitignore` and never will be pushed to source code
+repository, so you can safely use it for override some general config.
+
+For example `config/web-local.php` will override some settings
+from `config/web.php` (see [ArrayHelper::merge()](http://www.yiiframework.com/doc-2.0/guide-helper-array.html#merging-arrays)
+for more details). Then `config/web.php` contains general configuration of web application shared with
+all installations and `config/web-local.php` contains configuration, specific only for local installation.
+
 ### Database
 
 Edit the file `config/db.php` with real data, for example:
